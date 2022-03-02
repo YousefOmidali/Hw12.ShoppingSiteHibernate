@@ -14,13 +14,9 @@ public class SessionFactorySingleton {
 
         static {
             var registry = new StandardServiceRegistryBuilder()
-                    .configure() // goes and fetches configuration from hibernate.cfg.xml
+                    .configure()
                     .build();
 
-            // registry is useful for creating SessionFactory
-            // SessionFactory is a heavyweight object.
-            // SessionFactory is thread safe.
-            // SessionFactory is immutable.
             INSTANCE = new MetadataSources(registry)
                     .addAnnotatedClass(Customer.class)
                     .buildMetadata()
